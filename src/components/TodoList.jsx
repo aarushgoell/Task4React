@@ -18,12 +18,13 @@ export function TodoList() {
         setTodoList={setTodoList}
         error={error}
         setError={setError}
+        todolist={todolist}
       ></TodoInpComp>
 
       <DisplayAllTodos
         todolist={todolist}
         setTodoList={setTodoList}
-        setTodo = {setTodo}
+        setTodo={setTodo}
       ></DisplayAllTodos>
     </div>
   );

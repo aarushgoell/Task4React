@@ -27,12 +27,7 @@ export function TodoDisplay({
 
   return (
     <div>
-      <div
-        class="eachtodo"
-        onClick={() => {
-          setIsEditing(true);
-        }}
-      >
+      <div class="eachtodo">
         {isEditing ? (
           <input
             class="edittodo"
@@ -52,7 +47,13 @@ export function TodoDisplay({
             }}
           />
         ) : (
-          <div>{updatetodo}</div>
+          <div
+            onClick={() => {
+              setIsEditing(true);
+            }}
+          >
+            {updatetodo}
+          </div>
         )}
 
         <div
