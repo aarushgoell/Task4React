@@ -1,8 +1,7 @@
 import { TodoDisplay } from "./TodoDisplay";
 
-export function DisplayAllTodos({ todolist, setTodoList }) {
+export function DisplayAllTodos({ todolist, setTodoList, setTodo }) {
   function deleteTodo(id) {
-
     const newTodo = todolist.filter((tod) => tod.todoId != id);
 
     console.log(newTodo);
@@ -24,6 +23,7 @@ export function DisplayAllTodos({ todolist, setTodoList }) {
                   id={todoId}
                   todolist={todolist}
                   setTodoList={setTodoList}
+                  setTodo = {setTodo}
                 ></TodoDisplay>
               </div>
               <div

@@ -112,3 +112,12 @@
   margin: 5px;
   cursor: pointer;
 }
+
+.edittodo{
+  background-color: rgb(199, 66, 66);
+  border: none;
+  width: 100%;
+  padding: 3px;
+  outline: none;
+  font-size: 16px;
+}

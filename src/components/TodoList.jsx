@@ -23,6 +23,7 @@ export function TodoList() {
       <DisplayAllTodos
         todolist={todolist}
         setTodoList={setTodoList}
+        setTodo = {setTodo}
       ></DisplayAllTodos>
     </div>
   );

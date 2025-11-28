@@ -1,4 +1,16 @@
-export function TodoDisplay({ singleTodo, isDone, id, todolist, setTodoList }) {
+import { useState } from "react";
+
+export function TodoDisplay({
+  singleTodo,
+  isDone,
+  id,
+  todolist,
+  setTodoList,
+  setTodo,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatetodo, setUpdateTodo] = useState(singleTodo);
+
   function toggleTodo(id) {
     const newTodoList = todolist.map((todo) => {
       if (todo.todoId === id) {
@@ -15,8 +27,34 @@ export function TodoDisplay({ singleTodo, isDone, id, todolist, setTodoList }) {
 
   return (
     <div>
-      <div class="eachtodo">
-        <div>{singleTodo}</div>
+      <div
+        class="eachtodo"
+        onClick={() => {
+          setIsEditing(true);
+        }}
+      >
+        {isEditing ? (
+          <input
+            class="edittodo"
+            type="text"
+            value={updatetodo}
+            onChange={(e) => {
+              setUpdateTodo(e.target.value);
+            }}
+            onBlur={() => {
+              if (updatetodo.length >= 1) {
+                setIsEditing(false);
+              }
+            }}
+            autoFocus
+            onKeyDown={(e) => {
+              if (e.key === "Enter") setIsEditing(false);
+            }}
+          />
+        ) : (
+          <div>{updatetodo}</div>
+        )}
+
         <div
           onClick={() => {
             toggleTodo(id);
