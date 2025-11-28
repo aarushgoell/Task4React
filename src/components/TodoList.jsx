@@ -25,6 +25,8 @@ export function TodoList() {
         todolist={todolist}
         setTodoList={setTodoList}
         setTodo={setTodo}
+        todo={todo}
+        setError={setError}
       ></DisplayAllTodos>
     </div>
   );
