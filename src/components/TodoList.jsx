@@ -1,57 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { DisplayAllTodos } from "./DisplayAllTodos";
+import { TodoInpComp } from "./TodoInpComp";
 
 export function TodoList() {
   const [todo, setTodo] = useState("");
-  const [todlist, setTodList] = useState([]);
+  const [todolist, setTodoList] = useState([]);
+  const [error, setError] = useState("");
 
   return (
     <div>
       <div class="todhead">TODOS APPLICATION</div>
 
-      <TodoInpComp setTodo = {setTodo} todo = {todo}></TodoInpComp>
+      <TodoInpComp
+        setTodo={setTodo}
+        todo={todo}
+        newTodoList
+        setTodoList={setTodoList}
+        error={error}
+        setError={setError}
+      ></TodoInpComp>
 
-      <displayAllTodos></displayAllTodos>
+      <DisplayAllTodos
+        todolist={todolist}
+        setTodoList={setTodoList}
+      ></DisplayAllTodos>
     </div>
   );
-}
-
-function displayAllTodos(){
-
-
-    
-
-
-
-
-}
-
-
-function TodoInpComp({setTodo,todo}) {
-  return (
-    <div class="input-cont">
-      <div>Enter Todo:</div>
-
-      <div>
-        <input
-          value={todo}
-          type="text"
-          placeholder="Enter Todo"
-          class="inptod"
-          onChange={(e) => {
-            setTodo(e.target.value);
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
-function TodoDisplay({singleTodo}){
-
-    return <div>
-        
-        {singleTodo}
-
-    </div>
-
 }

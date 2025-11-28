@@ -1,3 +1,8 @@
+/* *{
+  margin: 0px;
+  padding: 0px;
+} */
+
 .counterbox {
   display: flex;
   font-size: 15px;
@@ -45,4 +50,65 @@
 .inptod{
   width: 600px;
   padding: 5px 3px;
+}
+
+.addbutton{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.addbutton div{
+  background-color: rgb(77, 187, 187);
+  padding: 5px 13px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.stytod{
+  padding: 10px;
+  background-color: rgb(199, 66, 66);
+  width: 50vw;
+}
+
+
+.parstytod{
+  display: flex;
+  justify-content: center;
+}
+
+.done{
+  cursor: pointer;
+  background-color: azure;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.error{
+  text-align: center;
+  color: red;
+  margin: 8px 0px;
+}
+
+.eachtodo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fulltodo{
+  display: flex;
+  background-color: rgb(89, 131, 73);
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.delete{  
+  background-color: rgb(17, 168, 115);  
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
 }
