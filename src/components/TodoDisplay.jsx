@@ -6,7 +6,9 @@ export function TodoDisplay({
   id,
   todolist,
   setTodoList,
-  setTodo,
+  setFilteredTodos,
+  checkFilter,
+  filteredTodos,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [updatetodo, setUpdateTodo] = useState(singleTodo);
@@ -22,7 +24,20 @@ export function TodoDisplay({
       return todo;
     });
 
+    const filteredTodosNewList = filteredTodos.map((todo) => {
+      if (todo.todoId === id) {
+        return {
+          ...todo,
+          isDone: todo.isDone === "NotDone" ? "Done" : "NotDone",
+        };
+      }
+      return todo;
+    });
+
     setTodoList(newTodoList);
+    if (checkFilter) {
+      setFilteredTodos(filteredTodosNewList);
+    }
   }
 
   return (

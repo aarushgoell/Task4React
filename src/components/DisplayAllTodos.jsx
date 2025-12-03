@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TodoDisplay } from "./TodoDisplay";
+
 let id = 0;
 
 export function DisplayAllTodos({
@@ -11,6 +12,7 @@ export function DisplayAllTodos({
 }) {
   const [filteredTodos, setFilteredTodos] = useState(todolist);
   const [checkFilter, setCheckFilter] = useState(false);
+  // const [finalList,setFinalList] = useState(todolist);
 
   const [search, setSearch] = useState("");
 
@@ -24,9 +26,12 @@ export function DisplayAllTodos({
   function deleteTodo(id) {
     const newTodo = todolist.filter((tod) => tod.todoId != id);
 
-    console.log(newTodo);
+    const newFilteredTodos = filteredTodos.filter((tod) => tod.todoId != id);
 
     setTodoList(newTodo);
+    if (checkFilter) {
+      setFilteredTodos(newFilteredTodos);
+    }
   }
 
   renderList = checkFilter ? filteredTodos : todolist;
@@ -58,8 +63,7 @@ export function DisplayAllTodos({
             onClick={() => {
               filterTodo();
             }}
-
-            class = "searchtodo"
+            class="searchtodo"
           >
             Search Todo
           </div>
@@ -86,6 +90,9 @@ export function DisplayAllTodos({
                     todolist={todolist}
                     setTodoList={setTodoList}
                     setTodo={setTodo}
+                    setFilteredTodos={setFilteredTodos}
+                    checkFilter={checkFilter}
+                    filteredTodos={filteredTodos}
                   ></TodoDisplay>
                 </div>
                 <div
