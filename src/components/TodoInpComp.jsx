@@ -6,7 +6,6 @@ export function TodoInpComp({ setTodo, todo, error }) {
     <div>
       <div class="input-cont">
         <div class = "entertodo">Enter Todo:</div>
-
         <div>
           <input
             value={todo}

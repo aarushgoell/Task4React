@@ -1,17 +1,21 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "../Redux/Slices/todoSlice";
 
 export function TodoDisplay({
   singleTodo,
   isDone,
   id,
-  todolist,
-  setTodoList,
+  // todolist,
+  // setTodoList,
   setFilteredTodos,
   checkFilter,
   filteredTodos,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [updatetodo, setUpdateTodo] = useState(singleTodo);
+  const todolist = useSelector((state) => state.Todo.allTodos);
+  const dispatch = useDispatch();
 
   function toggleTodo(id) {
     const newTodoList = todolist.map((todo) => {
@@ -34,7 +38,9 @@ export function TodoDisplay({
       return todo;
     });
 
-    setTodoList(newTodoList);
+    dispatch(addTodo(newTodoList));
+
+    // setTodoList(newTodoList);
     if (checkFilter) {
       setFilteredTodos(filteredTodosNewList);
     }

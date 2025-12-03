@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { TodoDisplay } from "./TodoDisplay";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "../Redux/Slices/todoSlice";
 
 let id = 0;
 
 export function DisplayAllTodos({
-  todolist,
-  setTodoList,
+  // todolist,
+  // setTodoList,
   setTodo,
   todo,
   setError,
 }) {
+  const todolist = useSelector((state) => state.Todo.allTodos);
   const [filteredTodos, setFilteredTodos] = useState(todolist);
   const [checkFilter, setCheckFilter] = useState(false);
-  // const [finalList,setFinalList] = useState(todolist);
-
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
 
   let renderList = todolist;
@@ -28,7 +30,8 @@ export function DisplayAllTodos({
 
     const newFilteredTodos = filteredTodos.filter((tod) => tod.todoId != id);
 
-    setTodoList(newTodo);
+    // setTodoList(newTodo);
+    dispatch(addTodo(newTodo));
     if (checkFilter) {
       setFilteredTodos(newFilteredTodos);
     }
@@ -42,10 +45,17 @@ export function DisplayAllTodos({
         <div
           onClick={() => {
             if (todo.length > 0) {
-              setTodoList((alltodos) => [
-                ...alltodos,
+              // setTodoList((alltodos) => [
+              //   ...alltodos,
+              //   { todoname: todo, todoId: id++, isDone: "NotDone" },
+              // ]);
+
+              const newTodo = [ 
+                ...todolist,
                 { todoname: todo, todoId: id++, isDone: "NotDone" },
-              ]);
+              ];
+
+              dispatch(addTodo(newTodo));
               setCheckFilter(false);
               setTodo("");
               setError("");
@@ -87,8 +97,8 @@ export function DisplayAllTodos({
                     singleTodo={todoname}
                     isDone={isDone}
                     id={todoId}
-                    todolist={todolist}
-                    setTodoList={setTodoList}
+                    // todolist={todolist}
+                    // setTodoList={setTodoList}
                     setTodo={setTodo}
                     setFilteredTodos={setFilteredTodos}
                     checkFilter={checkFilter}
